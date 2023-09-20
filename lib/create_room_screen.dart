@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, unused_local_variable, non_constant_identifier_names
 
 import 'package:advitiya/Widget_for_input.dart';
 import 'package:advitiya/paint_screen.dart';
