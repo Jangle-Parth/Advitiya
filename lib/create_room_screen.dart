@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field
 
 import 'package:advitiya/Widget_for_input.dart';
+import 'package:advitiya/paint_screen.dart';
 import 'package:flutter/material.dart';
 
 class CreateRoom extends StatefulWidget {
@@ -14,7 +15,23 @@ class _CreateRoomState extends State<CreateRoom> {
   final TextEditingController _roomcontroller = TextEditingController();
   final TextEditingController _roomnamecontroller = TextEditingController();
   late String? _maxroundsvalue; //? indicate string can be null
-  late String? _maxplayers; //? indicate string can be null
+  late String? _maxplayers;
+  void CreateRoom() {
+    if (_roomcontroller.text.isNotEmpty &&
+        _roomnamecontroller.text.isNotEmpty &&
+        _maxroundsvalue != null &&
+        _maxplayers != null) {
+      Map data = {
+        "nickname": _roomcontroller.text,
+        "roomname": _roomnamecontroller.text,
+        "maxrounds": _maxroundsvalue,
+        "maxplayers": _maxplayers,
+      };
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const PaintScreen()));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +112,7 @@ class _CreateRoomState extends State<CreateRoom> {
           height: 30,
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: CreateRoom,
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.blue),
               textStyle: MaterialStateProperty.all(
