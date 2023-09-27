@@ -27,8 +27,9 @@ class _CreateRoomState extends State<CreateRoom> {
         "maxrounds": _maxroundsvalue,
         "maxplayers": _maxplayers,
       };
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const PaintScreen()));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) =>
+              PaintScreen(data: data, screenFrom: 'createRoom')));
     }
   }
 

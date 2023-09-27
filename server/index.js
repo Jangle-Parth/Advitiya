@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 var server = http.createServer(app);
 const mongoose = require("mongoose");
+const { Socket } = require("socket.io");
 var io = require("socket.io")(server);
 
 app.use(express.json());
@@ -14,6 +15,19 @@ mongoose.connect(DB).then(() => {
     console.log("Sucess");
 }).catch((e) =>{
     console.log(e);
+})
+io.on('connection',(socket) =>{
+    console.log('connected');
+    socket.on('create-game',async({nickname,name,occupancy,maxRounds}) =>{
+        try{
+
+        }
+        catch(err){
+            
+        }
+
+    })
+
 })
 
 server.listen(port,"0.0.0.0",() =>{
