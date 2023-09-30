@@ -17,6 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const CircleAvatar(
+            backgroundImage: NetworkImage('assets\\1690646977071.jpeg'),
+            minRadius: 90,
+            maxRadius: 100,
+          ),
+          const SizedBox(
+            height: 30,
+          ),
           const Text("Welcome To Jangle Parth's Kingdom"),
           const Text(
             "Create/Join a room to play!",
