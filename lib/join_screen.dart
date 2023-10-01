@@ -1,3 +1,4 @@
+import 'package:advitiya/paint_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:advitiya/Widget_for_input.dart';
 
@@ -11,6 +12,19 @@ class JoinRoom extends StatefulWidget {
 class _JoinRoomState extends State<JoinRoom> {
   final TextEditingController _roomcontroller = TextEditingController();
   final TextEditingController _roomnamecontroller = TextEditingController();
+  void joinroom() {
+    if (_roomcontroller.text.isNotEmpty &&
+        _roomnamecontroller.text.isNotEmpty) {
+      Map data = {
+        "nickname": _roomcontroller.text,
+        "name": _roomnamecontroller.text,
+      };
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) =>
+              PaintScreen(data: data, screenFrom: 'joinRoom')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +57,7 @@ class _JoinRoomState extends State<JoinRoom> {
           height: 30,
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: joinroom,
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.blue),
               textStyle: MaterialStateProperty.all(

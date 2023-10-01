@@ -29,9 +29,12 @@ class _PaintScreenState extends State<PaintScreen> {
 
     if (widget.screenFrom == 'createRoom') {
       _socket.emit('create-game', widget);
+    } else {
+      _socket.emit('join-game', widget.data);
     }
 
     _socket.onConnect((data) {
+      // ignore: avoid_print
       print("Connected");
       _socket.on('updateRoom', (roomData) {
         setState(() {

@@ -1,3 +1,4 @@
+// import 'package:advitiya/home_screen.dart';
 import 'package:advitiya/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +12,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Advitiya',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomeScreen(),
-    );
+        title: 'Advitiya',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const HomeScreen());
   }
 }

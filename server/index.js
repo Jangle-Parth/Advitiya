@@ -13,7 +13,7 @@ app.use(express.json());
 const DB = 'mongodb+srv://Jangle_Parth:parth123@cluster0.cmdqp1y.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp';
 
 mongoose.connect(DB).then(() => {
-    console.log("Sucess");
+    console.log("Success");
 }).catch((e) =>{
     console.log(e);
 })
@@ -23,7 +23,7 @@ io.on('connection',(socket) =>{
         try{
             existing = await Room.findOne({name});
             if(existing){
-                socket.emit('not correct game','Room with that name already exist');
+                socket.emit('notcorrectgame','Room with that name already exist');
                 return;
             }
             let room = new Room();
@@ -50,7 +50,29 @@ io.on('connection',(socket) =>{
             
         }
 
-    })
+    });
+    socket.on('join-game',async({nickname,name})=>{
+        try{
+            let room = await Room.findOne({name});
+            if(!room){
+                socket.emit('notcorrectgame','Enter a valid Room name');
+                return;
+            }
+            if(room.isJoin){
+                let player = {
+                    socketID:socket.id,
+                    nickname,
+                }
+                room.players.push(player);
+                socket.join(name);
+            }
+
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+    )
 
 })
 
